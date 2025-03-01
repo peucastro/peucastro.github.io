@@ -10,7 +10,8 @@ export async function getStaticPaths({ paginate }) {
   return paginate(posts, { pageSize: 10 });
 }
 
-const { page } = Astro.props;
+import type { Page } from 'astro';
+const { page } = Astro.props as { page: Page };
 ---
 
 <BaseLayout title="Blog" sideBarActiveItemID="blog">
