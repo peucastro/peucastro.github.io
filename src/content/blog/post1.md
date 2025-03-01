@@ -1,9 +1,9 @@
 ---
-title: "Demo Post 1"
+title: "Example post"
 description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-pubDate: "Sep 10 2022"
+pubDate: "Mar 01 2025"
 heroImage: "/post_img.webp"
-tags: ["tokio"]
+tags: ["random"]
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
