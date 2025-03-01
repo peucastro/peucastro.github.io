@@ -10,7 +10,7 @@ export async function getStaticPaths({ paginate }) {
   return paginate(posts, { pageSize: 10 });
 }
 
-import type { Page } from 'astro';
+import type { Page } from "astro";
 const { page } = Astro.props as { page: Page };
 ---
 
