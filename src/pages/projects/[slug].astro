@@ -2,7 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import type { ProjectSchema } from "../../content/config";
-import PostLayout from "../../layouts/PostLayout.astro";
+import ProjectLayout from "../../layouts/ProjectLayout.astro";
 import createSlug from "../../lib/createSlug";
 
 export async function getStaticPaths() {
@@ -22,12 +22,17 @@ const project: ProjectSchema = entry.data;
 const { Content } = await entry.render();
 ---
 
-<PostLayout
+<ProjectLayout
   title={project.title}
   description={project.description}
   pubDate={project.pubDate}
-  heroImage={project.img}
+  updatedDate={project.updatedDate}
+  heroImage={project.heroImage}
   badge={project.badge}
+  tags={project.tags}
+  repository={project.repository}
+  status={project.status}
+  technologies={project.technologies}
 >
   <Content />
-</PostLayout>
+</ProjectLayout>

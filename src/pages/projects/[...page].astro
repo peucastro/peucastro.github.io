@@ -30,7 +30,7 @@ const { page } = Astro.props as { page: Page };
           <>
             <HorizontalCard
               title={project.data.title}
-              img={project.data.img}
+              img={project.data.heroImage}
               desc={project.data.description}
               url={"/projects/" + createSlug(project.data.title, project.slug)}
               target="_self"

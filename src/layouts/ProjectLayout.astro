@@ -1,0 +1,94 @@
+---
+import { type ProjectSchema } from "../content/config";
+import BaseLayout from "./BaseLayout.astro";
+import dayjs from "dayjs";
+import localizedFormat from "dayjs/plugin/localizedFormat";
+
+export interface Props extends ProjectSchema {}
+
+const {
+  title,
+  description,
+  pubDate,
+  updatedDate,
+  heroImage,
+  badge,
+  tags = [],
+  repository,
+  status,
+  technologies = [],
+} = Astro.props;
+dayjs.extend(localizedFormat);
+const displayDate = dayjs(pubDate).format("ll");
+import { Image } from "astro:assets";
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  image={heroImage}
+  ogType="article"
+>
+  <main class="md:flex md:justify-center">
+    <article class="prose prose-lg max-w-[750px] prose-img:mx-auto">
+      {
+        heroImage && (
+          <Image
+            width={750}
+            height={422}
+            format="webp"
+            src={heroImage}
+            alt={title}
+            class="w-full mb-6"
+          />
+        )
+      }
+      <h1 class="title my-2 text-4xl font-bold">{title}</h1>
+      {pubDate && <time>{displayDate}</time>}
+      <br />
+      {badge && <div class="badge badge-secondary my-1">{badge}</div>}
+      {
+        tags &&
+          tags.map((tag) => (
+            <a
+              href={`/projects/tag/${tag}`}
+              class="badge badge-outline ml-2 no-underline"
+            >
+              {tag}
+            </a>
+          ))
+      }
+      {
+        updatedDate && (
+          <div>
+            Last updated on <time>{updatedDate}</time>
+          </div>
+        )
+      }
+      {
+        repository && (
+          <div>
+            <a href={repository} target="_blank" class="btn btn-primary my-2">
+              View Repository
+            </a>
+          </div>
+        )
+      }
+      {status && <div class="badge badge-info my-2">Status: {status}</div>}
+      {
+        technologies.length > 0 && (
+          <div class="my-2">
+            <strong>Technologies:</strong>
+            <ul>
+              {technologies.map((tech) => (
+                <li>{tech}</li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+      <div class="divider my-2"></div>
+      <slot />
+    </article>
+  </main>
+</BaseLayout>

@@ -1,4 +1,5 @@
 import { z, defineCollection } from "astro:content";
+
 const blogSchema = z.object({
   title: z.string(),
   description: z.string(),
@@ -20,8 +21,8 @@ const projectSchema = z.object({
   title: z.string(),
   description: z.string(),
   pubDate: z.coerce.date(),
-  img: z.string().optional(),
-  url: z.string(),
+  updatedDate: z.string().optional(),
+  heroImage: z.string().optional(),
   badge: z.string().optional(),
   tags: z
     .array(z.string())
@@ -29,6 +30,9 @@ const projectSchema = z.object({
       message: "tags must be unique",
     })
     .optional(),
+  repository: z.string().url().optional(),
+  status: z.enum(["active", "completed", "archived"]).optional(),
+  technologies: z.array(z.string()).optional(),
 });
 
 export type ProjectSchema = z.infer<typeof projectSchema>;

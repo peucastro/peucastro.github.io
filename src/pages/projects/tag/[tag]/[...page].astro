@@ -40,12 +40,12 @@ const params: { tag: string } = Astro.params;
           <>
             <HorizontalCard
               title={project.data.title}
-              img={project.data.img}
+              img={project.data.heroImage}
               desc={project.data.description}
               url={"/projects/" + createSlug(project.data.title, project.slug)}
-              target="_self"
               badge={project.data.badge}
               tags={project.data.tags}
+              target="_self"
             />
             <div class="divider my-0" />
           </>
