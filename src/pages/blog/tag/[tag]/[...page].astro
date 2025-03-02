@@ -7,9 +7,7 @@ import type { Page } from "astro";
 
 export async function getStaticPaths({ paginate }) {
   const all_posts = await getCollection("blog");
-  const all_tags = all_posts.flatMap((post) => {
-    return post.data.tags || [];
-  });
+  const all_tags = all_posts.flatMap((project) => project.data.tags || []);
 
   return all_tags.flatMap((tag) => {
     const filtred_posts = all_posts.filter((post) => {
@@ -45,9 +43,9 @@ const params: { tag: string } = Astro.params;
               img={post.data.heroImage}
               desc={post.data.description}
               url={"/blog/" + createSlug(post.data.title, post.slug)}
-              target="_self"
               badge={post.data.badge}
               tags={post.data.tags}
+              target="_self"
             />
             <div class="divider my-0" />
           </>

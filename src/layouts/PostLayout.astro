@@ -16,7 +16,6 @@ const {
   tags = [],
 } = Astro.props;
 dayjs.extend(localizedFormat);
-const displayDate = dayjs(pubDate).format("ll");
 import { Image } from "astro:assets";
 ---
 
@@ -42,7 +41,7 @@ import { Image } from "astro:assets";
         )
       }
       <h1 class="title my-2 text-4xl font-bold">{title}</h1>
-      {pubDate && <time>{displayDate}</time>}
+      {pubDate && <time>{dayjs(pubDate).format("ll")}</time>}
       <br />
       {badge && <div class="badge badge-secondary my-1">{badge}</div>}
       {
@@ -56,16 +55,16 @@ import { Image } from "astro:assets";
             </a>
           ))
       }
+      <div class="divider my-2"></div>
+      <slot />
       {
         updatedDate && (
-          <div>
+          <div class="text-center">
             {" "}
-            Last updated on <time>{updatedDate}</time>{" "}
+            Last updated on <time>{dayjs(updatedDate).format("ll")}</time>{" "}
           </div>
         )
       }
-      <div class="divider my-2"></div>
-      <slot />
     </article>
   </main>
 </BaseLayout>

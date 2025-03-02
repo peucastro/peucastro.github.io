@@ -27,7 +27,7 @@ const { Content } = await entry.render();
   description={post.description}
   pubDate={post.pubDate}
   heroImage={post.heroImage}
-  updatedDate={post.updatedDate}
+  updatedDate={post.updatedDate ? post.updatedDate : post.pubDate}
   badge={post.badge}
   tags={post.tags}
 >
