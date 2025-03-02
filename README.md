@@ -39,7 +39,7 @@ pnpm run dev
 │   │   ├── Card.astro
 │   │   ├── Footer.astro
 │   │   ├── Header.astro
-│   │   └── HorizontalCard.astro
+│   │   └── cards/HorizontalCard.astro
 │   │   └── SideBar.astro
 │   │   └── SideBarMenu.astro
 │   │   └── SideBarFooter.astro
