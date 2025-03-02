@@ -51,7 +51,7 @@ const last_posts = posts.slice(0, 3);
           title={project.data.title}
           img={project.data.heroImage}
           desc={project.data.description}
-          url={"/blog/" + createSlug(project.data.title, project.slug)}
+          url={"/projects/" + createSlug(project.data.title, project.slug)}
           badge={project.data.badge}
           target="_self"
         />
