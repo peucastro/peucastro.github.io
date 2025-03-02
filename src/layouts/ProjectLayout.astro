@@ -19,8 +19,24 @@ const {
   technologies = [],
 } = Astro.props;
 dayjs.extend(localizedFormat);
-const displayDate = dayjs(pubDate).format("ll");
 import { Image } from "astro:assets";
+
+let statusClass = "";
+if (status) {
+  switch (status) {
+    case "active":
+      statusClass = "badge badge-info";
+      break;
+    case "completed":
+      statusClass = "badge badge-success";
+      break;
+    case "archived":
+      statusClass = "badge badge-warning";
+      break;
+    default:
+      statusClass = "badge";
+  }
+}
 ---
 
 <BaseLayout
@@ -43,10 +59,27 @@ import { Image } from "astro:assets";
           />
         )
       }
-      <h1 class="title my-2 text-4xl font-bold">{title}</h1>
-      {pubDate && <time>{displayDate}</time>}
+
+      <div class="flex items-center justify-between mb-4">
+        <h1 class="text-4xl font-bold my-auto">{title}</h1>
+        {
+          repository && (
+            <a
+              href={repository}
+              target="_blank"
+              class="btn btn-primary my-auto"
+            >
+              View Repository
+            </a>
+          )
+        }
+      </div>
+
+      {pubDate && <time>{dayjs(pubDate).format("ll")}</time>}
       <br />
+
       {badge && <div class="badge badge-secondary my-1">{badge}</div>}
+
       {
         tags &&
           tags.map((tag) => (
@@ -58,37 +91,32 @@ import { Image } from "astro:assets";
             </a>
           ))
       }
-      {
-        updatedDate && (
-          <div>
-            Last updated on <time>{updatedDate}</time>
-          </div>
-        )
-      }
-      {
-        repository && (
-          <div>
-            <a href={repository} target="_blank" class="btn btn-primary my-2">
-              View Repository
-            </a>
-          </div>
-        )
-      }
-      {status && <div class="badge badge-info my-2">Status: {status}</div>}
+      <br />
+
+      {status && <div class={`${statusClass} my-2`}>Status: {status}</div>}
+
       {
         technologies.length > 0 && (
-          <div class="my-2">
-            <strong>Technologies:</strong>
-            <ul>
+          <div class="flex items-center my-2">
+            <strong class="mr-2">Technologies:</strong>
+            <div class="flex flex-wrap">
               {technologies.map((tech) => (
-                <li>{tech}</li>
+                <span class="badge badge-outline ml-2">{tech}</span>
               ))}
-            </ul>
+            </div>
           </div>
         )
       }
+
       <div class="divider my-2"></div>
       <slot />
+      {
+        updatedDate && (
+          <div class="text-center">
+            Last updated on <time>{dayjs(updatedDate).format("ll")}</time>
+          </div>
+        )
+      }
     </article>
   </main>
 </BaseLayout>
