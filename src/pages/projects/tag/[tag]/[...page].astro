@@ -2,7 +2,7 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import HorizontalCard from "@components/cards/HorizontalCard.astro";
 import { getCollection } from "astro:content";
-import createSlug from "../../../../lib/createSlug";
+import createSlug from "src/lib/createSlug";
 import type { Page } from "astro";
 
 export async function getStaticPaths({ paginate }) {

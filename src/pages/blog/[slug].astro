@@ -1,9 +1,9 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
-import type { BlogSchema } from "../../content/config";
-import PostLayout from "../../layouts/PostLayout.astro";
-import createSlug from "../../lib/createSlug";
+import type { BlogSchema } from "src/content/config";
+import PostLayout from "@layouts/PostLayout.astro";
+import createSlug from "src/lib/createSlug";
 
 export async function getStaticPaths() {
   const postEntries = await getCollection("blog");
