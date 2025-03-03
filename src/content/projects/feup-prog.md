@@ -1,12 +1,12 @@
 ---
 title: "RGB Image Processing in C++"
 description: "A C++ project for representing and processing RGB images with 8-bit color channels, supporting PNG file manipulation and scripted image transformations."
-pubDate: "Mar 02 2025"
+pubDate: "May 18 2023"
 heroImage: "/projects/feup-prog.png"
 badge: "FEUP"
-tags: ["image processing"]
+tags: ["image processing", "2023"]
 repository: "https://github.com/peucastro/prog_project"
-status: "archived"
+status: "completed"
 technologies: ["C++", "Object-Oriented Programming"]
 ---
 
