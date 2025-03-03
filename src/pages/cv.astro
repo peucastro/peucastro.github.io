@@ -2,6 +2,7 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import TimeLineElement from "@components/cv/TimeLine.astro";
 import SkillSection from "@components/cv/SkillSection.astro";
+import { Image } from "astro:assets";
 ---
 
 <BaseLayout title="Resume" sideBarActiveItemID="cv">
@@ -31,7 +32,15 @@ import SkillSection from "@components/cv/SkillSection.astro";
         <p class="text-md">linkedin.com/in/peucastro</p>
       </a>
     </div>
-    <img class="rounded-full max-w-32 h-fit" src="/profile-cv.jpg" />
+    <div class="w-[9.5rem]">
+      <Image
+        class="mask mask-circle"
+        width={300}
+        height={300}
+        src="/profile-cv.jpg"
+        alt="CV image"
+      />
+    </div>
   </div>
 
   <div class="mb-5">
