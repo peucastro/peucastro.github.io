@@ -12,7 +12,7 @@
       name="name"
       placeholder="Your Name"
       required
-      class="w-full p-4 border-b border-gray-300 bg-transparent focus:border-primary outline-none"
+      class="w-full p-4 border-b border-neutral bg-transparent focus:border-primary outline-none"
     />
   </div>
 
@@ -23,7 +23,7 @@
       name="email"
       placeholder="Your Email"
       required
-      class="w-full p-4 border-b border-gray-300 bg-transparent focus:border-primary outline-none"
+      class="w-full p-4 border-b border-neutral bg-transparent focus:border-primary outline-none"
     />
   </div>
 
@@ -34,7 +34,7 @@
       name="subject"
       placeholder="Subject"
       required
-      class="w-full p-4 border-b border-gray-300 bg-transparent focus:border-primary outline-none"
+      class="w-full p-4 border-b border-neutral bg-transparent focus:border-primary outline-none"
     />
   </div>
 
@@ -44,20 +44,20 @@
       name="message"
       placeholder="Your Message"
       required
-      class="w-full p-4 border-b border-gray-300 bg-transparent focus:border-primary outline-none"
+      class="w-full p-4 border-b border-neutral bg-transparent focus:border-primary outline-none"
     ></textarea>
   </div>
 
   <div class="flex justify-center">
     <button
       type="submit"
-      class="px-6 py-3 text-sm border-2 border-gray-300 rounded-md bg-transparent hover:bg-secondary hover:text-primary transition-all duration-300 focus:outline-none"
+      class="px-6 py-3 text-sm border-2 border-accent rounded-md bg-transparent hover:bg-secondary hover:text-accent-content hover:border-transparent transition-all duration-300 focus:outline-none"
     >
       Send Message
     </button>
   </div>
 
-  <div id="result" class="mt-4"></div>
+  <div id="result" class="mt-4 text-center"></div>
 </form>
 
 <script is:inline>
@@ -82,19 +82,19 @@
       body: json,
     })
       .then(async (response) => {
-        let jsonResponse = await response.json();
+        let json = await response.json();
         if (response.status == 200) {
-          result.innerHTML = jsonResponse.message;
+          result.innerHTML = json.message;
         } else {
-          console.error(response);
-          result.innerHTML = jsonResponse.message;
+          console.log(response);
+          result.innerHTML = json.message;
         }
       })
       .catch((error) => {
-        console.error("Form submission error:", error);
+        console.log(error);
         result.innerHTML = "Something went wrong!";
       })
-      .finally(() => {
+      .then(function () {
         form.reset();
         setTimeout(() => {
           result.style.display = "none";
