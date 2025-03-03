@@ -10,7 +10,6 @@ const {
   title,
   description,
   pubDate,
-  updatedDate,
   heroImage,
   badge,
   tags = [],
@@ -109,14 +108,6 @@ if (status) {
 
       <div class="divider my-2"></div>
       <slot />
-      {
-        updatedDate && (
-          <div class="text-center">
-            {" "}
-            Last updated on <time>{dayjs(updatedDate).format("ll")}</time>{" "}
-          </div>
-        )
-      }
     </article>
   </main>
 </BaseLayout>
