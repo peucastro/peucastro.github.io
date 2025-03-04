@@ -96,7 +96,7 @@ set<string> FlightNetwork::getReachableCities(const Airport &airport, const int 
 }
 ```
 
-For example, when seacrhing for the cities reachable from the Petrolina (PNZ) airport with 2 stops maximum, we can see the following output:
+For example, when searching for the cities reachable from the Petrolina airport (PNZ) with 2 stops maximum, we can see the following output:
 
 ![Terminal output](/projects/feup-aed2_2.png)
 
