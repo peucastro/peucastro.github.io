@@ -1,8 +1,9 @@
 ---
-import { CollectionEntry, getCollection } from "astro:content";
-import { BlogSchema } from "../../content/config";
-import PostLayout from "../../layouts/PostLayout.astro";
-import createSlug from "../../lib/createSlug";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import type { BlogSchema } from "src/content/config";
+import PostLayout from "@layouts/PostLayout.astro";
+import createSlug from "src/lib/createSlug";
 
 export async function getStaticPaths() {
   const postEntries = await getCollection("blog");
@@ -26,7 +27,7 @@ const { Content } = await entry.render();
   description={post.description}
   pubDate={post.pubDate}
   heroImage={post.heroImage}
-  updatedDate={post.updatedDate}
+  updatedDate={post.updatedDate ? post.updatedDate : post.pubDate}
   badge={post.badge}
   tags={post.tags}
 >
