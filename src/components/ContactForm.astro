@@ -1,0 +1,104 @@
+<form method="POST" id="form" class="space-y-6">
+  <input
+    type="hidden"
+    name="access_key"
+    value="1373c982-97be-4867-a832-aa449f2cb74f"
+  />
+
+  <div class="space-y-2">
+    <label class="block text-sm">Name</label>
+    <input
+      type="text"
+      name="name"
+      placeholder="Your Name"
+      required
+      class="w-full p-4 border-b border-neutral bg-transparent focus:border-primary outline-none"
+    />
+  </div>
+
+  <div class="space-y-2">
+    <label class="block text-sm">Email</label>
+    <input
+      type="email"
+      name="email"
+      placeholder="Your Email"
+      required
+      class="w-full p-4 border-b border-neutral bg-transparent focus:border-primary outline-none"
+    />
+  </div>
+
+  <div class="space-y-2">
+    <label class="block text-sm">Subject</label>
+    <input
+      type="text"
+      name="subject"
+      placeholder="Subject"
+      required
+      class="w-full p-4 border-b border-neutral bg-transparent focus:border-primary outline-none"
+    />
+  </div>
+
+  <div class="space-y-2">
+    <label class="block text-sm">Message</label>
+    <textarea
+      name="message"
+      placeholder="Your Message"
+      required
+      class="w-full p-4 border-b border-neutral bg-transparent focus:border-primary outline-none"
+    ></textarea>
+  </div>
+
+  <div class="flex justify-center">
+    <button
+      type="submit"
+      class="px-6 py-3 text-sm border-2 border-accent rounded-md bg-transparent hover:bg-secondary hover:text-accent-content hover:border-transparent transition-all duration-300 focus:outline-none"
+    >
+      Send Message
+    </button>
+  </div>
+
+  <div id="result" class="mt-4 text-center"></div>
+</form>
+
+<script is:inline>
+  const form = document.getElementById("form");
+  const result = document.getElementById("result");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    result.style.display = "block";
+    result.innerHTML = "Please wait...";
+
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: json,
+    })
+      .then(async (response) => {
+        let json = await response.json();
+        if (response.status == 200) {
+          result.innerHTML = json.message;
+        } else {
+          console.log(response);
+          result.innerHTML = json.message;
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        result.innerHTML = "Something went wrong!";
+      })
+      .then(function () {
+        form.reset();
+        setTimeout(() => {
+          result.style.display = "none";
+        }, 3000);
+      });
+  });
+</script>
