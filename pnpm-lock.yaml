@@ -23,8 +23,8 @@ importers:
         specifier: ^4.0.2
         version: 4.16.18(rollup@4.34.8)(typescript@5.7.3)
       daisyui:
-        specifier: ^4.4.10
-        version: 4.12.23(postcss@8.5.3)
+        specifier: ^5.0.4
+        version: 5.0.4
       dayjs:
         specifier: ^1.11.9
         version: 1.11.13
@@ -1395,12 +1395,6 @@ packages:
       }
     engines: { node: ">= 8" }
 
-  css-selector-tokenizer@0.8.0:
-    resolution:
-      {
-        integrity: sha512-Jd6Ig3/pe62/qe5SBPTN8h8LeUg/pT4lLgtavPf7updwwHpvFzxvOQBHYj2LZDMjUnBzgvIUSjRcf6oT5HzHFg==,
-      }
-
   cssesc@3.0.0:
     resolution:
       {
@@ -1409,19 +1403,11 @@ packages:
     engines: { node: ">=4" }
     hasBin: true
 
-  culori@3.3.0:
+  daisyui@5.0.4:
     resolution:
       {
-        integrity: sha512-pHJg+jbuFsCjz9iclQBqyL3B2HLCBF71BwVNujUYEvCeQMvV97R59MNK3R2+jgJ3a1fcZgI9B3vYgz8lzr/BFQ==,
+        integrity: sha512-9X3oX/k9hPBCslAECk8kYfvwgrz6Grs0lN7VI0/ZTM/hUfq1uFREHxCcBCCq0QROpN183N19B1hTNRWGipO2Eg==,
       }
-    engines: { node: ^12.20.0 || ^14.13.1 || >=16.0.0 }
-
-  daisyui@4.12.23:
-    resolution:
-      {
-        integrity: sha512-EM38duvxutJ5PD65lO/AFMpcw+9qEy6XAZrTpzp7WyaPeO/l+F/Qiq0ECHHmFNcFXh5aVoALY4MGrrxtCiaQCQ==,
-      }
-    engines: { node: ">=16.9.0" }
 
   dayjs@1.11.13:
     resolution:
@@ -1677,12 +1663,6 @@ packages:
         integrity: sha512-RKihhV+SHsIUGXObeVy9AXiBbFwkVk7Syp8XgwN5U3JV416+Gwp/GO9i0JYKmikykgz/UHRrrV4ROuZEo/T0ig==,
       }
     hasBin: true
-
-  fastparse@1.1.2:
-    resolution:
-      {
-        integrity: sha512-483XLLxTVIwWK3QTrMGRqUfUpoOs/0hbQrl2oz4J0pAcm3A3bu84wxTFqGqkJzewCLdME38xJLJAxBABfQT8sQ==,
-      }
 
   fastq@1.19.0:
     resolution:
@@ -4528,23 +4508,9 @@ snapshots:
       shebang-command: 2.0.0
       which: 2.0.2
 
-  css-selector-tokenizer@0.8.0:
-    dependencies:
-      cssesc: 3.0.0
-      fastparse: 1.1.2
-
   cssesc@3.0.0: {}
 
-  culori@3.3.0: {}
-
-  daisyui@4.12.23(postcss@8.5.3):
-    dependencies:
-      css-selector-tokenizer: 0.8.0
-      culori: 3.3.0
-      picocolors: 1.1.1
-      postcss-js: 4.0.1(postcss@8.5.3)
-    transitivePeerDependencies:
-      - postcss
+  daisyui@5.0.4: {}
 
   dayjs@1.11.13: {}
 
@@ -4694,8 +4660,6 @@ snapshots:
   fast-xml-parser@4.5.3:
     dependencies:
       strnum: 1.1.1
-
-  fastparse@1.1.2: {}
 
   fastq@1.19.0:
     dependencies:
