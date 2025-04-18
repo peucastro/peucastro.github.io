@@ -82,8 +82,8 @@
       body: json,
     })
       .then(async (response) => {
-        let json = await response.json();
-        if (response.status == 200) {
+        const json = await response.json();
+        if (response.status === 200) {
           result.innerHTML = json.message;
         } else {
           console.log(response);

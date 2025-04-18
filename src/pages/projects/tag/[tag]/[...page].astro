@@ -6,14 +6,14 @@ import createSlug from "src/lib/createSlug";
 import type { Page } from "astro";
 
 export async function getStaticPaths({ paginate }) {
-  const all_projects = await getCollection("projects");
-  const all_tags = all_projects.flatMap((project) => project.data.tags || []);
+  const allProjects = await getCollection("projects");
+  const allTags = allProjects.flatMap((project) => project.data.tags || []);
 
-  return all_tags.flatMap((tag) => {
-    const filtered_projects = all_projects.filter((project) =>
+  return allTags.flatMap((tag) => {
+    const filteredProjects = allProjects.filter((project) =>
       project.data.tags?.includes(tag),
     );
-    return paginate(filtered_projects, {
+    return paginate(filteredProjects, {
       params: { tag },
       pageSize: 10,
     });

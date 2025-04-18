@@ -11,8 +11,8 @@ const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
-const last_projects = projects.slice(0, 3);
-const last_posts = posts.slice(0, 3);
+const lastProjects = projects.slice(0, 3);
+const lastPosts = posts.slice(0, 3);
 ---
 
 <BaseLayout sideBarActiveItemID="home">
@@ -49,7 +49,7 @@ const last_posts = posts.slice(0, 3);
   </div>
 
   {
-    last_projects.map((project) => (
+    lastProjects.map((project) => (
       <>
         <HorizontalCard
           title={project.data.title}
@@ -69,7 +69,7 @@ const last_posts = posts.slice(0, 3);
   </div>
 
   {
-    last_posts.map((post) => (
+    lastPosts.map((post) => (
       <>
         <HorizontalCard
           title={post.data.title}

@@ -6,18 +6,18 @@ import createSlug from "src/lib/createSlug";
 import type { Page } from "astro";
 
 export async function getStaticPaths({ paginate }) {
-  const all_posts = await getCollection("blog");
-  const all_tags = all_posts.flatMap((project) => project.data.tags || []);
+  const allPosts = await getCollection("blog");
+  const allTags = allPosts.flatMap((project) => project.data.tags || []);
 
-  return all_tags.flatMap((tag) => {
-    const filtred_posts = all_posts.filter((post) => {
-      return post.data.tags?.includes(tag);
-    });
-    return paginate(filtred_posts, {
-      params: { tag },
-      pageSize: 10,
-    });
-  });
+  return allTags.flatMap((tag) =>
+    paginate(
+      allPosts.filter((post) => post.data.tags?.includes(tag)),
+      {
+        params: { tag },
+        pageSize: 10,
+      },
+    ),
+  );
 }
 
 const { page } = Astro.props as { page: Page };
