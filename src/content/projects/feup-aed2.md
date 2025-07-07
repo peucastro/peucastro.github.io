@@ -44,17 +44,14 @@ The Haversine formula is implemented in a dedicated function that calculates the
 ### Key Functionalities
 
 - **Global Statistics:**
-
   - Total number of airports and available flights.
   - Number of flights from an airport, including counts per airline.
 
 - **Destination Analysis:**
-
   - List of reachable destinations (airports, cities, countries) from a given airport.
   - Computation of reachable nodes within a certain number of stops.
 
 - **Flight Options:**
-
   - Calculation of the best flight route (with the fewest stops) between a source and destination.
   - Filtering options to consider only specific airlines or minimize the variety of airlines used.
 
