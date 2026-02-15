@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://peucastro.github.io/sitemap-index.xml
